@@ -133,6 +133,34 @@
             <label for="target" class="block text-sm font-bold mb-2">Target <i class="fas fa-question-circle text-gray-400"></i></label>
             <input type="text" id="target" placeholder="IPv4, CIDR, URL or @Preset Name" class="w-full p-2 bg-gray-700 text-gray-300 rounded">
         </div>
+        <div class="flex space-x-4 mb-4">
+            <div class="w-1/2">
+                <label class="block text-sm font-medium mb-1">Attack Time <i class="fas fa-question-circle text-gray-400"></i></label>
+                <div class="flex items-center space-x-2">
+                    <input id="attackTimeRange" type="range" min="1" max="3000" value="15" class="w-full" oninput="updateAttackTime()">
+                    <input id="attackTimeValue" type="text" value="15" class="w-12 p-2 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-center">
+                </div>
+            </div>
+            <div class="w-1/2">
+                <label class="block text-sm font-medium mb-1">Concurrents <i class="fas fa-question-circle text-gray-400"></i></label>
+                <div class="flex items-center space-x-2">
+                    <input id="concurrentsRange" type="range" min="1" max="5" value="1" class="w-full" oninput="updateConcurrents()">
+                    <input id="concurrentsValue" type="text" value="1" class="w-12 p-2 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 text-center">
+                </div>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Attack Method <i class="fas fa-question-circle text-gray-400"></i></label>
+            <select id="attackMethod" class="w-full p-2 bg-gray-700 rounded border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <option>[FREE] HTTP-SPAM</option>
+                <option>[FREE] HTTP-BYPASS</option>
+                <option>[FREE] TLS</option>
+                <option>[FREE] TLS-GORILLA</option>
+                <option>[FREE] MIX</option>
+                <option>[FREE] UDP-KILL</option>
+                <option>[FREE] TCP-BYPASS</option>
+            </select>
+        </div>
         <div class="flex justify-end">
             <button class="bg-gray-700 text-gray-400 font-bold py-2 px-4 rounded mr-2" onclick="openModal('presetModal')">Save as Preset</button>
             <button class="bg-gray-700 text-gray-400 font-bold py-2 px-4 rounded mr-2" onclick="openModal('scheduleModal')">Schedule Attack</button>
@@ -165,7 +193,7 @@
     <div id="presetModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('presetModal')">&times;</span>
-            <p class="text-center text-lg font-bold mb-4"><i class="fas fa-bolt text-yellow-500"></i> Schedule Attack</p>
+            <p class="text-center text-lg font-bold mb-4"><i class="fas fa-bolt text-yellow-500"></i> Save as Preset</p>
             <p class="text-center text-green-500">Success: Preset saved successfully!</p>
         </div>
     </div>
@@ -192,6 +220,8 @@
 
     <script>
         let deployCooldown = false;
+        let attackCount = 0;
+        let countdownInterval;
 
         function toggleDropdown() {
             const dropdownMenu = document.getElementById('dropdownMenu');
@@ -222,14 +252,19 @@
             }
 
             const target = document.getElementById('target').value;
+            const attackTime = document.getElementById('attackTimeValue').value;
+            const concurrents = document.getElementById('concurrentsValue').value;
+            const attackMethod = document.getElementById('attackMethod').value;
+
             if (target) {
                 const logMessages = document.getElementById('logMessages');
                 const attackLog = document.createElement('div');
                 attackLog.className = 'attack-log';
                 attackLog.innerHTML = `
                     <i class="fas fa-check-circle"></i> Attack successful to: <span class="text-yellow-500">${target}</span><br>
-                    <p>Time: <span class="text-yellow-500">3000 Seconds</span></p>
-                    <p>Methods: <span class="text-yellow-500">Layer4/Layer7</span></p>
+                    <p>Time: <span class="text-yellow-500">${attackTime} Seconds</span></p>
+                    <p>Concurrents: <span class="text-yellow-500">${concurrents}</span></p>
+                    <p>Methods: <span class="text-yellow-500">${attackMethod}</span></p>
                     <p><span class="text-red-500">Connection Timed Out</span></p>
                 `;
                 logMessages.appendChild(attackLog);
@@ -238,20 +273,46 @@
 
                 // Start cooldown
                 deployCooldown = true;
+                attackCount++;
                 const deployButton = document.getElementById('deployButton');
                 deployButton.classList.add('disabled');
                 deployButton.disabled = true;
 
-                setTimeout(() => {
-                    deployCooldown = false;
-                    deployButton.classList.remove('disabled');
-                    deployButton.disabled = false;
-                }, 60000); // 60 seconds cooldown
+                let countdown = 60;
+                const countdownMessage = document.createElement('div');
+                countdownMessage.className = 'warning-message';
+                countdownMessage.id = 'countdownMessage';
+                countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
+                logMessages.appendChild(countdownMessage);
+
+                countdownInterval = setInterval(() => {
+                    countdown--;
+                    countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
+                    if (countdown <= 0) {
+                        clearInterval(countdownInterval);
+                        logMessages.removeChild(countdownMessage);
+                        deployCooldown = false;
+                        deployButton.classList.remove('disabled');
+                        deployButton.disabled = false;
+                    }
+                }, 1000);
             }
         }
 
         function upgrade() {
             window.location.href = "https://wa.me/6285252689486";
+        }
+
+        function updateAttackTime() {
+            var attackTimeRange = document.getElementById('attackTimeRange');
+            var attackTimeValue = document.getElementById('attackTimeValue');
+            attackTimeValue.value = attackTimeRange.value;
+        }
+
+        function updateConcurrents() {
+            var concurrentsRange = document.getElementById('concurrentsRange');
+            var concurrentsValue = document.getElementById('concurrentsValue');
+            concurrentsValue.value = concurrentsRange.value;
         }
     </script>
 </body>
