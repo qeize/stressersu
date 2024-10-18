@@ -1,0 +1,243 @@
+<html>
+<head>
+    <title>Attack Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Arial', sans-serif;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .modal-content {
+            background-color: #1f2937;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        .log-message {
+            background-color: #1f2937;
+            border-left: 4px solid #10b981;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .warning-message {
+            background-color: #1f2937;
+            border-left: 4px solid #f59e0b;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        .disabled {
+            background-color: #6b7280;
+            cursor: not-allowed;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background-color: #1f2937;
+            border: 1px solid #888;
+            border-radius: 8px;
+            z-index: 100;
+        }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #c9d1d9;
+            text-decoration: none;
+        }
+        .dropdown a:hover {
+            background-color: #374151;
+        }
+        .dropdown a i {
+            margin-right: 10px;
+        }
+        .color-shift {
+            background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <div class="flex items-center">
+                <i class="fas fa-bolt text-yellow-500 text-2xl mr-2"></i>
+                <h1 class="text-2xl font-bold">Attack Hub</h1>
+            </div>
+            <p class="color-shift text-sm font-bold mt-1">c: @winterkeith</p>
+        </div>
+        <i class="fas fa-bars text-gray-400 text-2xl cursor-pointer" onclick="toggleDropdown()"></i>
+        <div id="dropdownMenu" class="dropdown">
+            <a href="https://t.me/winterkeith" target="_blank"><i class="fab fa-telegram-plane"></i>Telegram</a>
+            <a href="https://wa.me/6285252689486" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+            <a href="https://youtu.be/dQw4w9WgXcQ?feature=shared" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
+        </div>
+    </div>
+    <p class="mb-6">Deploy your attacks here.</p>
+    <div class="bg-gray-800 p-6 rounded-lg mb-6">
+        <div class="flex items-center justify-center mb-4">
+            <i class="fas fa-gem text-yellow-500 text-4xl"></i>
+        </div>
+        <p class="text-center text-lg font-bold mb-2">You are currently using the Free Network.</p>
+        <p class="text-center text-sm mb-4">To get more power and gain access to powerful L4/L7 methods upgrade your account.</p>
+        <div class="flex justify-center">
+            <button class="bg-yellow-500 text-black font-bold py-2 px-4 rounded" onclick="upgrade()">Upgrade</button>
+        </div>
+    </div>
+    <div class="bg-gray-800 p-4 rounded-lg mb-6">
+        <div class="flex justify-between items-center mb-4">
+            <p class="font-bold">Stresser Form (1/1)</p>
+            <i class="fas fa-chevron-down text-gray-400"></i>
+        </div>
+        <div class="mb-4">
+            <label for="target" class="block text-sm font-bold mb-2">Target <i class="fas fa-question-circle text-gray-400"></i></label>
+            <input type="text" id="target" placeholder="IPv4, CIDR, URL or @Preset Name" class="w-full p-2 bg-gray-700 text-gray-300 rounded">
+        </div>
+        <div class="flex justify-end">
+            <button class="bg-gray-700 text-gray-400 font-bold py-2 px-4 rounded mr-2" onclick="openModal('presetModal')">Save as Preset</button>
+            <button class="bg-gray-700 text-gray-400 font-bold py-2 px-4 rounded mr-2" onclick="openModal('scheduleModal')">Schedule Attack</button>
+            <button id="deployButton" class="bg-yellow-500 text-black font-bold py-2 px-4 rounded" onclick="deployAttack()">Deploy Attack</button>
+        </div>
+    </div>
+    <div>
+        <h2 class="text-lg font-bold mb-4">Attack <span class="text-yellow-500">Manager</span></h2>
+        <div class="bg-gray-800 p-4 rounded-lg mb-4">
+            <div class="flex justify-between items-center">
+                <p class="font-bold"><i class="fas fa-bolt text-yellow-500"></i> Running</p>
+                <p id="runningCount" class="font-bold">0/1</p>
+            </div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg mb-4">
+            <div class="flex justify-between items-center">
+                <p class="font-bold"><i class="fas fa-clock text-gray-400"></i> Scheduled</p>
+                <p id="scheduledCount" class="font-bold">0/0</p>
+            </div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg">
+            <div class="flex justify-between items-center">
+                <p class="font-bold"><i class="fas fa-cog text-gray-400"></i> Preset</p>
+                <p id="presetCount" class="font-bold">0/0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save as Preset Modal -->
+    <div id="presetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('presetModal')">&times;</span>
+            <p class="text-center text-lg font-bold mb-4">Save as Preset</p>
+            <p class="text-center text-green-500">Success: Preset saved successfully!</p>
+        </div>
+    </div>
+
+    <!-- Schedule Attack Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('scheduleModal')">&times;</span>
+            <p class="text-center text-lg font-bold mb-4">Schedule Attack</p>
+            <p class="text-center text-green-500">Success: Attack scheduled successfully!</p>
+        </div>
+    </div>
+
+    <!-- Logs Section -->
+    <div id="logs" class="bg-gray-800 p-4 rounded-lg mt-6">
+        <h2 class="text-lg font-bold mb-4">Logs</h2>
+        <div id="logMessages" class="text-sm"></div>
+    </div>
+
+    <!-- Terminal Section -->
+    <div class="bg-gray-800 p-4 rounded-lg mt-6" style="height: 500px;">
+        <iframe src="https://terminator.aeza.net" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
+    <script>
+        let deployCooldown = false;
+
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            if (modalId === 'presetModal') {
+                document.getElementById('presetCount').innerText = '1/1';
+            } else if (modalId === 'scheduleModal') {
+                document.getElementById('scheduledCount').innerText = '1/1';
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function deployAttack() {
+            if (deployCooldown) {
+                const logMessages = document.getElementById('logMessages');
+                const warningMessage = document.createElement('div');
+                warningMessage.className = 'warning-message';
+                warningMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: Attack is on cooldown. Please wait 60 seconds.`;
+                logMessages.appendChild(warningMessage);
+                return;
+            }
+
+            const target = document.getElementById('target').value;
+            if (target) {
+                const logMessages = document.getElementById('logMessages');
+                const logMessage = document.createElement('div');
+                logMessage.className = 'log-message';
+                logMessage.innerHTML = `<i class="fas fa-check-circle"></i> Attack successful to: <span class="text-yellow-500">${target}</span>`;
+                logMessages.appendChild(logMessage);
+                document.getElementById('runningCount').innerText = '1/1';
+
+                // Start cooldown
+                deployCooldown = true;
+                const deployButton = document.getElementById('deployButton');
+                deployButton.classList.add('disabled');
+                deployButton.disabled = true;
+
+                setTimeout(() => {
+                    deployCooldown = false;
+                    deployButton.classList.remove('disabled');
+                    deployButton.disabled = false;
+                }, 60000); // 60 seconds cooldown
+            }
+        }
+
+        function upgrade() {
+            window.location.href = "https://youtu.be/dQw4w9WgXcQ?feature=shared";
+        }
+    </script>
+</body>
+  </html>
