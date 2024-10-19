@@ -7,10 +7,16 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+        .menu {
+            display: none;
+        }
+        .menu.active {
+            display: flex;
+        }
     </style>
     <script>
-        function openMenu() {
-            window.open('https://attacks.vercel.app/menu', '_blank');
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
         }
     </script>
 </head>
@@ -18,29 +24,33 @@
     <header class="flex justify-between items-center p-4">
         <div class="flex items-center">
             <i class="fas fa-crown text-yellow-500 mr-2"></i>
-            <span class="text-lg font-bold">STRESSER.VIP</span>
+            <span class="text-lg font-bold">STRESSER.SU</span>
         </div>
         <div>
-            <i class="fas fa-bars text-white text-2xl cursor-pointer" onclick="openMenu()"></i>
+            <i class="fas fa-bars text-white text-2xl cursor-pointer" onclick="toggleMenu()"></i>
         </div>
     </header>
+    <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
+        <a href="https://attacks.vercel.app" class="text-2xl font-bold">Home</a>
+        <a href="https://attacks.vercel.app/login" class="text-2xl font-bold">Login</a>
+        <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
+        <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Hub</a>
+    </div>
     <main class="text-center mt-16 px-4">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Stresser.vip, the Ultimate Choice for Free IP Stresser, Booter, and Leading Layer 7 Services.
+            Stresser.su, the Ultimate Choice for Free IP Stresser, Booter, and Leading Layer 7 Services.
         </h1>
         <p class="mt-8 text-lg md:text-xl lg:text-2xl">
-Are you searching for an <span class="font-bold">IP stresser</span> service? If you ended up here, you just found the best <span class="font-bold">IP booter</span>
-to protect any of your application Layer4, Layer7 etc..
+            Are you searching for an <span class="font-bold">IP stresser</span> service? If you ended up here, you just found the best <span class="font-bold">IP booter</span> to protect any of your application Layer4, Layer7 etc.
         </p>
         <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-With our <span class="font-bold">Cryptostresser</span> you have a large selection of personalization to <span class="font-bold">instant stress</span> all your servers.
+            With our <span class="font-bold">Cryptostresser</span>, you have a large selection of personalization to <span class="font-bold">instant stress</span> all your servers.
         </p>
         <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-With our incredible capacity you have the possibility to simulate <span class="font-bold">BOTNET</span>
-attack and make sure your are protected against it.
+            With our incredible capacity, you have the possibility to simulate <span class="font-bold">BOTNET</span> attacks and make sure you are protected against them.
         </p>
         <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-Our Layer7 methods are good as they can <span class="font-bold">Bypass Cloudflare, Sucuri, Ddos guard</span> and all the others CDN.
+            Our Layer7 methods are as good as they can <span class="font-bold">Bypass Cloudflare, Sucuri, Ddos guard</span> and all the other CDNs.
         </p>
         <div class="mt-8 flex justify-center space-x-4">
             <a class="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded" href="https://attacks.vercel.app/register">Sign Up</a>
@@ -54,4 +64,4 @@ Our Layer7 methods are good as they can <span class="font-bold">Bypass Cloudflar
         </div>
     </main>
 </body>
-</html>
+                </html>
