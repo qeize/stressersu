@@ -204,16 +204,6 @@
                 <h1 class="text-2xl font-bold">Attack Hub</h1>
             </div>
             <p class="color-shift text-sm font-bold mt-1">c: @winterkeith</p>
-        </div>
-        <i class="fas fa-bars text-gray-400 text-2xl cursor-pointer" onclick="toggleMenu()"></i>
-    </div>
-    <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
-        <i class="fas fa-times text-white text-2xl cursor-pointer absolute top-4 right-4" onclick="toggleMenu()"></i>
-        <a href="https://attacks.vercel.app" class="text-2xl font-bold">Home</a>
-        <a href="https://attacks.vercel.app/login" class="text-2xl font-bold">Login</a>
-        <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
-        <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Hub</a>
-    </div>
     <p class="mb-6">Deploy your attacks here.</p>
     <div class="bg-gray-800 p-6 rounded-lg mb-6">
         <div class="flex items-center justify-center mb-4">
@@ -316,8 +306,18 @@
 
     <!-- GIF Section -->
     <div class="flex justify-center mt-6">
-        <img src="https://h.top4top.io/p_32135lw5w0.gif" alt="Colorful GIF">
- </style>
+       <img src="https://h.top4top.io/p_32135lw5w0.gif" alt="Colorful GIF">
+ </div>
+        <i class="fas fa-bars text-gray-400 text-2xl cursor-pointer" onclick="toggleMenu()"></i>
+    </div>
+    <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
+        <i class="fas fa-times text-white text-2xl cursor-pointer absolute top-4 right-4" onclick="toggleMenu()"></i>
+        <a href="https://attacks.vercel.app" class="text-2xl font-bold">Home</a>
+        <a href="https://attacks.vercel.app/login" class="text-2xl font-bold">Login</a>
+        <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
+        <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Hub</a>
+    </div>
+    </style>
     <script>
         function toggleMenu() {
             document.getElementById('menu').classList.toggle('active');
