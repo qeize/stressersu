@@ -1,0 +1,86 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #d1d5db;
+            font-family: 'Arial', sans-serif;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-lg shadow-md">
+        <div class="flex flex-col items-center">
+            <div class="text-yellow-500 text-6xl mb-4">
+                <i class="fas fa-crown"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-yellow-500">Sign Up</h2>
+            <p class="mt-2 text-sm text-gray-400">
+                Already registered? <a href="https://attacks.vercel.app/login" class="text-yellow-500">Login Here</a>
+            </p>
+        </div>
+        <form class="space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-user"></i> Username
+                </label>
+                <input type="text" id="username" name="username" placeholder="Username" class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <input type="password" id="password" name="password" placeholder="Password" class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+                <label for="telegram" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-paper-plane"></i> Telegram ID (Optional)
+                </label>
+                <input type="text" id="telegram" name="telegram" placeholder="MyTelegramUser" class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+                <label for="language" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-language"></i> Language preference
+                </label>
+                <select id="language" name="language" class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <option>English</option>
+                    <option>Spanish</option>
+                    <option>French</option>
+                </select>
+            </div>
+            <div class="flex items-center justify-between">
+                <div id="captcha" class="text-2xl font-bold text-white">vfNKe</div>
+                <button type="button" class="p-2 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500" onclick="randomizeCaptcha()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            <div>
+                <label for="captcha" class="block text-sm font-medium text-gray-300">
+                    <i class="fas fa-lock"></i> Captcha
+                </label>
+                <input type="text" id="captcha-input" name="captcha" placeholder="Captcha" class="w-full px-3 py-2 mt-1 text-gray-900 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            </div>
+            <div>
+                <button type="submit" class="w-full px-4 py-2 text-lg font-semibold text-gray-900 bg-yellow-500 rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function randomizeCaptcha() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 5; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            document.getElementById('captcha').innerText = captcha;
+        }
+    </script>
+</body>
+</html>
