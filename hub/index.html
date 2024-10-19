@@ -95,106 +95,7 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .menu {
-            display: none;
-        }
-        .menu.active {
-            display: flex;
-        }
     </style>
-    <script>
-        function toggleDropdown() {
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        }
-        
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
-            if (modalId === 'presetModal') {
-                document.getElementById('presetCount').innerText = '1/1';
-            } else if (modalId === 'scheduleModal') {
-                document.getElementById('scheduledCount').innerText = '1/1';
-            }
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        function deployAttack() {
-            if (deployCooldown) {
-                const logMessages = document.getElementById('logMessages');
-                const warningMessage = document.createElement('div');
-                warningMessage.className = 'warning-message';
-                warningMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: Attack is on cooldown. Please wait 60 seconds.`;
-                logMessages.appendChild(warningMessage);
-                return;
-            }
-
-            const target = document.getElementById('target').value;
-            const attackTime = document.getElementById('attackTimeValue').value;
-            const concurrents = document.getElementById('concurrentsValue').value;
-            const attackMethod = document.getElementById('attackMethod').value;
-
-            if (target) {
-                const logMessages = document.getElementById('logMessages');
-                const attackLog = document.createElement('div');
-                attackLog.className = 'attack-log';
-                attackLog.innerHTML = `
-                    <i class="fas fa-check-circle"></i> Attack successful to: <span class="text-white-500">${target}</span><br>
-                    <p>Time: <span class="text-white-500">${attackTime} Seconds</span></p>
-                    <p>Concurrents: <span class="text-white-500">${concurrents}</span></p>
-                    <p>Methods: <span class="text-white-500">${attackMethod}</span></p>
-                    <p><span class="text-red-500">Connection Timed Out</span></p>
-                `;
-                logMessages.appendChild(attackLog);
-
-                document.getElementById('runningCount').innerText = '1/1';
-
-                // Start cooldown
-                deployCooldown = true;
-                attackCount++;
-                const deployButton = document.getElementById('deployButton');
-                deployButton.classList.add('disabled');
-                deployButton.disabled = true;
-
-                let countdown = 60;
-                const countdownMessage = document.createElement('div');
-                countdownMessage.className = 'warning-message';
-                countdownMessage.id = 'countdownMessage';
-                countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
-                logMessages.appendChild(countdownMessage);
-
-                countdownInterval = setInterval(() => {
-                    countdown--;
-                    countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
-                    if (countdown <= 0) {
-                        clearInterval(countdownInterval);
-                        logMessages.removeChild(countdownMessage);
-                        deployCooldown = false;
-                        deployButton.classList.remove('disabled');
-                        deployButton.disabled = false;
-                    }
-                }, 1000);
-            }
-        }
-
-        function upgrade() {
-            window.location.href = "https://wa.me/6285252689486";
-        }
-
-        function updateAttackTime() {
-            var attackTimeRange = document.getElementById('attackTimeRange');
-            var attackTimeValue = document.getElementById('attackTimeValue');
-            attackTimeValue.value = attackTimeRange.value;
-        }
-
-        function updateConcurrents() {
-            var concurrentsRange = document.getElementById('concurrentsRange');
-            var concurrentsValue = document.getElementById('concurrentsValue');
-            concurrentsValue.value = concurrentsRange.value;
-        }
-    </script>
 </head>
 <body class="p-4">
     <div class="flex justify-between items-center mb-6">
@@ -203,7 +104,8 @@
                 <i class="fas fa-bolt text-yellow-500 text-2xl mr-2"></i>
                 <h1 class="text-2xl font-bold">Attack Hub</h1>
             </div>
-            </div>
+            <p class="color-shift text-sm font-bold mt-1">c: @winterkeith</p>
+        </div>
         <i class="fas fa-bars text-gray-400 text-2xl cursor-pointer" onclick="toggleMenu()"></i>
     </div>
     <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
@@ -213,7 +115,7 @@
         <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
         <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Attack Hub</a>
     </div>
-            <p class="color-shift text-sm font-bold mt-1">c: @winterkeith</p>
+    </div>
     <p class="mb-6">Deploy your attacks here.</p>
     <div class="bg-gray-800 p-6 rounded-lg mb-6">
         <div class="flex items-center justify-center mb-4">
@@ -316,7 +218,106 @@
 
     <!-- GIF Section -->
     <div class="flex justify-center mt-6">
-       <img src="https://h.top4top.io/p_32135lw5w0.gif" alt="Colorful GIF">
+        <img src="https://h.top4top.io/p_32135lw5w0.gif" alt="Colorful GIF">
+    </div>
+
+    <script>
+        let deployCooldown = false;
+        let attackCount = 0;
+        let countdownInterval;
+
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            if (modalId === 'presetModal') {
+                document.getElementById('presetCount').innerText = '1/1';
+            } else if (modalId === 'scheduleModal') {
+                document.getElementById('scheduledCount').innerText = '1/1';
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function deployAttack() {
+            if (deployCooldown) {
+                const logMessages = document.getElementById('logMessages');
+                const warningMessage = document.createElement('div');
+                warningMessage.className = 'warning-message';
+                warningMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: Attack is on cooldown. Please wait 60 seconds.`;
+                logMessages.appendChild(warningMessage);
+                return;
+            }
+
+            const target = document.getElementById('target').value;
+            const attackTime = document.getElementById('attackTimeValue').value;
+            const concurrents = document.getElementById('concurrentsValue').value;
+            const attackMethod = document.getElementById('attackMethod').value;
+
+            if (target) {
+                const logMessages = document.getElementById('logMessages');
+                const attackLog = document.createElement('div');
+                attackLog.className = 'attack-log';
+                attackLog.innerHTML = `
+                    <i class="fas fa-check-circle"></i> Attack successful to: <span class="text-white-500">${target}</span><br>
+                    <p>Time: <span class="text-white-500">${attackTime} Seconds</span></p>
+                    <p>Concurrents: <span class="text-white-500">${concurrents}</span></p>
+                    <p>Methods: <span class="text-white-500">${attackMethod}</span></p>
+                    <p><span class="text-red-500">Connection Timed Out</span></p>
+                `;
+                logMessages.appendChild(attackLog);
+
+                document.getElementById('runningCount').innerText = '1/1';
+
+                // Start cooldown
+                deployCooldown = true;
+                attackCount++;
+                const deployButton = document.getElementById('deployButton');
+                deployButton.classList.add('disabled');
+                deployButton.disabled = true;
+
+                let countdown = 60;
+                const countdownMessage = document.createElement('div');
+                countdownMessage.className = 'warning-message';
+                countdownMessage.id = 'countdownMessage';
+                countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
+                logMessages.appendChild(countdownMessage);
+
+                countdownInterval = setInterval(() => {
+                    countdown--;
+                    countdownMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Warning: You have performed an attack, wait another ${countdown} seconds.`;
+                    if (countdown <= 0) {
+                        clearInterval(countdownInterval);
+                        logMessages.removeChild(countdownMessage);
+                        deployCooldown = false;
+                        deployButton.classList.remove('disabled');
+                        deployButton.disabled = false;
+                    }
+                }, 1000);
+            }
+        }
+
+        function upgrade() {
+            window.location.href = "https://wa.me/6285252689486";
+        }
+
+        function updateAttackTime() {
+            var attackTimeRange = document.getElementById('attackTimeRange');
+            var attackTimeValue = document.getElementById('attackTimeValue');
+            attackTimeValue.value = attackTimeRange.value;
+        }
+
+        function updateConcurrents() {
+            var concurrentsRange = document.getElementById('concurrentsRange');
+            var concurrentsValue = document.getElementById('concurrentsValue');
+            concurrentsValue.value = concurrentsRange.value;
+        }
+    </script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -336,5 +337,7 @@
             </div>
         </div>
     </main>
+</body>
+</html>
 </body>
 </html>
