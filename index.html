@@ -1,117 +1,263 @@
+<!doctype html>
 <html lang="en">
-<head>
-       <title>Stresser.vip</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
-</head>
-<body class="bg-gray-900 text-white">
-    <header class="flex justify-between items-center p-4">
-        <div class="flex items-center">
-            <i class="fas fa-crown text-yellow-500 mr-2"></i>
-            <span class="text-lg font-bold">STRESSER.VIP</span>
-        </div>
-        <div>
-            <i class="fas fa-bars text-white text-2xl cursor-pointer" onclick="toggleMenu()"></i>
-        </div>
-    </header>
-    <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
-        <i class="fas fa-times text-white text-2xl cursor-pointer absolute top-4 right-4" onclick="toggleMenu()"></i>
-        <a href="https://attacks.vercel.app" class="text-2xl font-bold">Home</a>
-        <a href="https://attacks.vercel.app/login" class="text-2xl font-bold">Login</a>
-        <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
-        <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Attack Hub</a>
-        <a href="https://attacks.vercel.app/terminal" class="text-2xl font-bold">Free Vps</a>
-    </div>
-    <main class="text-center mt-16 px-4">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            Stresser.vip, the Ultimate Choice for Free IP Stresser, Booter, and Leading Layer 7 Services.
-        </h1>
-        <p class="mt-8 text-lg md:text-xl lg:text-2xl">
-            Are you searching for an <span class="font-bold">IP stresser</span> service? If you ended up here, you just found the best <span class="font-bold">IP booter</span> to protect any of your application Layer4, Layer7 etc.
-        </p>
-        <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-            With our <span class="font-bold">Cryptostresser</span>, you have a large selection of personalization to <span class="font-bold">instant stress</span> all your servers.
-        </p>
-        <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-            With our incredible capacity, you have the possibility to simulate <span class="font-bold">BOTNET</span> attacks and make sure you are protected against them.
-        </p>
-        <p class="mt-4 text-lg md:text-xl lg:text-2xl">
-            Our Layer7 methods are as good as they can <span class="font-bold">Bypass Cloudflare, Sucuri, Ddos guard</span> and all the other CDNs.
-        </p>
-        <div class="mt-8 flex justify-center space-x-4">
-            <a class="bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded" href="https://attacks.vercel.app/register">Sign Up</a>
-            <a class="bg-gray-700 text-white font-bold py-2 px-4 rounded" href="https://attacks.vercel.app/login">Login</a>
-        </div>
-        <div class="mt-16">
-            <h2 class="text-3xl font-bold mb-8">Website Previews</h2>
-            <div class="flex justify-center">
-                <img alt="Preview of the website showing the attack page" class="rounded-lg shadow-lg" src="https://b.top4top.io/p_3214uvuhi0.jpg" style="width: 80%; max-width: 600px;"/>
-            </div>
-        </div>
-    </main>
-    <div class="text-center max-w-2xl mt-16 mx-auto">
-        <p class="mb-8 text-lg">
-            Unlock the potential of our attack hub with customizable settings. Easily bypass any target, even those equipped with custom rules against DDoS attacks. Achieve your goals seamlessly with our user-friendly approach.
-        </p>
-        <div class="space-y-8">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <div class="flex items-center justify-center mb-4">
-                    <i class="fab fa-bitcoin text-4xl"></i>
+    <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Stresser.su: The No.1 for IP Stresser and Free Booter Services.</title>
+	<link rel="canonical" href="https://stresser.su" />
+        <meta name="description" content="Unleash the power of Stresser.su - the ultimate IP stresser and booter. Experience unparalleled performance. Get started with our free stresser service now!">
+        <meta name="keywords" content="ip stresser, stresser, free ip stresser, free ip booter, booter">
+        <link rel="preload" href="fonts.woff" as="font" >
+		<link rel="stylesheet" href="landing.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="img/180.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/16.png">
+        <link rel="manifest" href="img/site.webmanifest">
+        <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="stresser.su">
+        <meta name="application-name" content="stresser.su">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-config" content="browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <meta name="audience" content="all"/>
+        <meta name="author" content="stresser.su">
+        <meta property="og:type" content="website"/>
+        <meta property='og:locale' content='en_US'/>
+        <meta property="og:description" content="Unleash the power of Stresser.su - the ultimate IP stresser and booter. Experience unparalleled performance. Get started with our free stresser service now!"/>
+        <meta property="og:site_name" content="stresser.su"/>
+        <meta property="og:url" content="https://stresser.su"/>
+        <meta property="og:image" content="img/logo.png">
+        <meta property="og:title" content="Stresser.su: The No.1 for IP Stresser and Free Booter Services.">
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@stresserdotsu"/>
+        <meta name="twitter:title" content="Stresser.su: The No.1 for IP Stresser and Free Booter Services."/>
+        <meta name="twitter:description" content="Unleash the power of Stresser.su - the ultimate IP stresser and booter. Experience unparalleled performance. Get started with our free stresser service now!"/>
+        <meta name="twitter:image" content="img/logo.png"/>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org/",
+                "@type": "WebSite",
+                "name": "Stresser.su",
+                "start_url": "https://stresser.su",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "{search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SSGSR26KRK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SSGSR26KRK');
+</script>
+    </head>
+    <body>
+        <header class="hero container-fluid">
+            <nav class="hero-nav container px-4 px-lg-0 mx-auto">
+                <ul class="nav w-100 list-unstyled align-items-center p-0">
+                    <li class="hero-nav__item">
+                        <span class="banner">
+                            <svg fill="#e1e10e" width="22" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                <path d="M309 106c11.4-7 19-19.7 19-34c0-22.1-17.9-40-40-40s-40 17.9-40 40c0 14.4 7.6 27 19 34L209.7 220.6c-9.1 18.2-32.7 23.4-48.6 10.7L72 160c5-6.7 8-15 8-24c0-22.1-17.9-40-40-40S0 113.9 0 136s17.9 40 40 40c.2 0 .5 0 .7 0L86.4 427.4c5.5 30.4 32 52.6 63 52.6H426.6c30.9 0 57.4-22.1 63-52.6L535.3 176c.2 0 .5 0 .7 0c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40c0 9 3 17.3 8 24l-89.1 71.3c-15.9 12.7-39.5 7.5-48.6-10.7L309 106z"></path>
+                            </svg>
+                            STRESSER.SU                
+                        </span>
+                    </li>
+                    <li id="hero-menu" class="flex-grow-1 hero__nav-list hero__nav-list--mobile-menu ft-menu">
+                        <button aria-label="mobile button" id="mobile-button-close" class="ft-menu__close-btn animated">
+                            <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                               <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd" />
+                               <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <ul class="hero__menu-content nav flex-column flex-lg-row ft-menu__slider animated list-unstyled p-2 p-lg-0">
+                            <li>
+								<ul class="nav list-unstyled align-items-center p-0">
+									<li class="hero-nav__item">
+										<a title="Home" href="#s" class="nav_menu">Home</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Features" href="#features" onclick="smoothScroll(document.getElementById('features'))" class="nav_menu">Features</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Pricing" href="#pricing" onclick="smoothScroll(document.getElementById('pricing'))" class="nav_menu">Pricing</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="FAQ" href="#faq" onclick="smoothScroll(document.getElementById('faq'))" class="nav_menu">FAQ</a>
+									</li>
+									<li class="hero-nav__item">
+                                    <a title="Login" href="/login" class="nav_menu">Login</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Register" href="register.html" class="nav_menu">Register</a>
+									</li>
+								</ul>
+							</li>
+                        </ul>   
+                    </li>
+                    <li class="d-lg-none flex-grow-1 d-flex flex-row-reverse hero-nav__item">
+                        <button aria-label="mobile button" id="mobile-button-show" class="text-center px-2">
+                            <svg fill ="white" width="19" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero__content container mx-auto">
+                <div class="row px-0 mx-0 align-items-center">
+                    <h1 class="hero__title mb-5"> Stresser.su, the Ultimate Choice for <strong>Free IP Stresser</strong>, Booter, and Leading Layer 7 Services.</h1>
+                    <div class="splitedLeft px-0">
+                        <p class="hero__paragraph mb-5">
+                            Are you searching for an <strong>IP stresser</strong> service ? If you ended up here, you just found the best <b>IP booter</b> to protect any of your application Layer4, Layer7 etc..
+                            <br>
+                            <br>
+                            With our <b>Cryptostresser</b> you have a large selection of personalization to <b>instant stress</b> all your servers.
+                            <br>
+                            <br> With our incredible capacity you have the possibility to simulate <b>BOTNET</b> attack and make sure your are protected against it.
+                            <br>
+                            <br>
+                            Our Layer7 methods are good as they can <b>Bypass Cloudflare, Sucuri, Ddos guard</b> and all the others CDN.
+                        </p>
+                        <div class="hero__btns-container">
+                            <a title="Register" class="hero__btn btn btn-primary mb-2 mb-lg-0" href="register.html">
+                                Sign Up
+                            </a>
+                        </div>
+                        <div class="hero__btns-container">
+                            <a title="Login" class="hero__btn btn btn-secondary mb-2 mb-lg-0" href="/login">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                    <div class="splitedRight px-0">
+                        <img src="img/dashboard.webp" height="100%" width="666" alt="Stresser Dashboard" title="Stresser Dashboard">
+                    </div>
                 </div>
-                <h2 class="text-xl font-semibold mb-2">Secure Payment</h2>
-                <p>We handle all of your payment by cryptocurrency with our own nodes to ensure 100% anonymity.</p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <div class="flex items-center justify-center mb-4">
-                    <i class="fas fa-shield-alt text-4xl"></i>
+        </header>
+        <div id="features" class="block-11 space-between-blocks">
+            <div class="container">
+                <div class="block__header col-lg-8 col-xl-7 mx-auto text-center">
+                    <h2 class="block__title mb-3">Features</h2>
+                    <p class="block__paragraph mb-0">Some features about our system</p>
                 </div>
-                <h2 class="text-xl font-semibold mb-2">Your safety is important for us</h2>
-                <p>Stress tests are started from multiple places (dedicated servers) and can not be monitored. Your privacy is safe with us, no logs are kept and all data is encrypted.</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <div class="flex items-center justify-center mb-4">
-                    <i class="fas fa-headset text-4xl"></i>
+                <div class="row align-items-center justify-content-center flex-lg-row px-1">
+                    <div class="demoHub">
+                        <img src="img/advanced_stresser_hub.webp" height="100%" width="1100" alt="Customizable IP STRESSER hub." title="IP Stresser attack HUB">
+                    </div>
+                    <p class="card-1__paragraph mt20px fs-19 prl-15 text-center">Unlock the potential of our attack hub with customizable settings. Easily bypass any target, even those equipped with custom rules against DDoS attacks. Achieve your goals seamlessly with our user-friendly approach.</p>
                 </div>
-                <h2 class="text-xl font-semibold mb-2">Our support team is with you 24/7</h2>
-                <p>Our support is here to help you, if you need anything you can contact us.</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                <div class="flex items-center justify-center mb-4">
-                    <i class="fas fa-code text-4xl"></i>
+                <div class="featuresDesc px-4">
+                    <div class="row justify-space-between">
+                        <div class="boxDesc mb-2-1rem">
+                           <div class="card-1 card-1--selected text-center">
+                              <span class="card-1__symbol mx-auto mb-4">
+                                 <svg fill="white" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zm-141.651-35.33c4.937-32.999-20.191-50.739-54.55-62.573l11.146-44.702-27.213-6.781-10.851 43.524c-7.154-1.783-14.502-3.464-21.803-5.13l10.929-43.81-27.198-6.781-11.153 44.686c-5.922-1.349-11.735-2.682-17.377-4.084l.031-.14-37.53-9.37-7.239 29.062s20.191 4.627 19.765 4.913c11.022 2.751 13.014 10.044 12.68 15.825l-12.696 50.925c.76.194 1.744.473 2.829.907-.907-.225-1.876-.473-2.876-.713l-17.796 71.338c-1.349 3.348-4.767 8.37-12.471 6.464.271.395-19.78-4.937-19.78-4.937l-13.51 31.147 35.414 8.827c6.588 1.651 13.045 3.379 19.4 5.006l-11.262 45.213 27.182 6.781 11.153-44.733a1038.209 1038.209 0 0 0 21.687 5.627l-11.115 44.523 27.213 6.781 11.262-45.128c46.404 8.781 81.299 5.239 95.986-36.727 11.836-33.79-.589-53.281-25.004-65.991 17.78-4.098 31.174-15.792 34.747-39.949zm-62.177 87.179c-8.41 33.79-65.308 15.523-83.755 10.943l14.944-59.899c18.446 4.603 77.6 13.717 68.811 48.956zm8.417-87.667c-7.673 30.736-55.031 15.12-70.393 11.292l13.548-54.327c15.363 3.828 64.836 10.973 56.845 43.035z"></path>
+                                 </svg>
+                              </span>
+                              <h3 class="card-1__title mb-2">Secure Payment</h3>
+                              <p class="card-1__paragraph">
+                                 We handle all of your payment by cryptocurrency with our own nodes to ensure 100% anonymity.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="boxDesc mb-2-1rem">
+                           <div class="card-1 text-center">
+                              <span class="card-1__symbol mx-auto mb-4">
+                                 <svg fill="white" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M224 16c-6.7 0-10.8-2.8-15.5-6.1C201.9 5.4 194 0 176 0c-30.5 0-52 43.7-66 89.4C62.7 98.1 32 112.2 32 128c0 14.3 25 27.1 64.6 35.9c-.4 4-.6 8-.6 12.1c0 17 3.3 33.2 9.3 48H45.4C38 224 32 230 32 237.4c0 1.7 .3 3.4 1 5l38.8 96.9C28.2 371.8 0 423.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7c0-58.5-28.2-110.4-71.7-143L415 242.4c.6-1.6 1-3.3 1-5c0-7.4-6-13.4-13.4-13.4H342.7c6-14.8 9.3-31 9.3-48c0-4.1-.2-8.1-.6-12.1C391 155.1 416 142.3 416 128c0-15.8-30.7-29.9-78-38.6C324 43.7 302.5 0 272 0c-18 0-25.9 5.4-32.5 9.9c-4.7 3.3-8.8 6.1-15.5 6.1zm56 208H267.6c-16.5 0-31.1-10.6-36.3-26.2c-2.3-7-12.2-7-14.5 0c-5.2 15.6-19.9 26.2-36.3 26.2H168c-22.1 0-40-17.9-40-40V169.6c28.2 4.1 61 6.4 96 6.4s67.8-2.3 96-6.4V184c0 22.1-17.9 40-40 40zm-88 96l16 32L176 480 128 288l64 32zm128-32L272 480 240 352l16-32 64-32z"></path>
+                                 </svg>
+                              </span>
+                              <h3 class="card-1__title mb-2">Your safety is important for us</h3>
+                              <p class="card-1__paragraph">
+                                 Stress tests are started from multiple places (dedicated servers) and can not be monitored. Your privacy is safe with us, no logs are kept and all data is encrypted.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="boxDesc mb-2-1rem">
+                           <div class="card-1 text-center">
+                              <span class="card-1__symbol mx-auto mb-4">
+                                 <svg fill="white" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M464.1 431C474.3 440.4 474.3 455.6 464.1 464.1C455.6 474.3 440.4 474.3 431 464.1L419.3 453.2C374.9 489.9 318.1 512 256 512C193.9 512 137.1 489.9 92.74 453.2L80.97 464.1C71.6 474.3 56.4 474.3 47.03 464.1C37.66 455.6 37.66 440.4 47.03 431L58.8 419.3C22.08 374.9 0 318.1 0 256C0 193.9 22.08 137.1 58.8 92.74L47.03 80.97C37.66 71.6 37.66 56.4 47.03 47.03C56.4 37.66 71.6 37.66 80.97 47.03L92.74 58.8C137.1 22.08 193.9 0 256 0C318.1 0 374.9 22.08 419.3 58.8L431 47.03C440.4 37.66 455.6 37.66 464.1 47.03C474.3 56.4 474.3 71.6 464.1 80.97L453.2 92.74C489.9 137.1 512 193.9 512 256C512 318.1 489.9 374.9 453.2 419.3L464.1 431zM304.8 338.7C290.5 347.2 273.8 352 256 352C238.2 352 221.5 347.2 207.2 338.7L126.9 419.1C162.3 447.2 207.2 464 256 464C304.8 464 349.7 447.2 385.1 419.1L304.8 338.7zM464 256C464 207.2 447.2 162.3 419.1 126.9L338.7 207.2C347.2 221.5 352 238.2 352 256C352 273.8 347.2 290.5 338.7 304.8L419.1 385.1C447.2 349.7 464 304.8 464 256V256zM256 48C207.2 48 162.3 64.8 126.9 92.93L207.2 173.3C221.5 164.8 238.2 160 256 160C273.8 160 290.5 164.8 304.8 173.3L385.1 92.93C349.7 64.8 304.8 48 256 48V48zM173.3 304.8C164.8 290.5 160 273.8 160 256C160 238.2 164.8 221.5 173.3 207.2L92.93 126.9C64.8 162.3 48 207.2 48 256C48 304.8 64.8 349.7 92.93 385.1L173.3 304.8zM256 208C229.5 208 208 229.5 208 256C208 282.5 229.5 304 256 304C282.5 304 304 282.5 304 256C304 229.5 282.5 208 256 208z"></path>
+                                 </svg>
+                              </span>
+                              <h3 class="card-1__title mb-2">Our support team is with you 24/7</h3>
+                              <p class="card-1__paragraph">
+                                 Our support is here to help you, if you need anything you can contact us.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="boxDesc mb-2-1rem">
+                           <div class="card-1 text-center">
+                              <span class="card-1__symbol mx-auto mb-4">
+                                 <svg fill="white" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                    <path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path>
+                                 </svg>
+                              </span>
+                              <h3 class="card-1__title mb-2">Modern attack methods</h3>
+                              <p class="card-1__paragraph">
+                                 Our ddos attack methods are capable of bypassing the latest protections and our engineers are constantly improving them.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
                 </div>
-                <h2 class="text-xl font-semibold mb-2">Modern attack methods</h2>
-                <p>Our ddos attack methods are capable of bypassing the latest protections and our engineers are constantly improving them.</p>
             </div>
         </div>
-        <div class="mt-12 text-center">
-            <h2 class="text-2xl font-semibold mb-4">Join us</h2>
-            <p>A reliable Booter and Webstresser, ran by experienced persons in DDoS area. We are capable of providing the best DDoS for hire service of the century with an attack power that you will not see anywhere else.</p>
-        </div>
-        <div class="mt-8">
-            <a class="text-blue-500 hover:underline" href="https://t.me/winterkeith">
-                <i class="fab fa-telegram-plane text-2xl"></i>
-                Join our Telegram
-            </a>
-        </div>
-<style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
-        .menu {
-            display: none;
-        }
-        .menu.active {
-            display: flex;
-        }
-    </style>
-    <script>
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
-    </script>
+        <div class="block-32 space-between-blocks">
+            <div class="container">
+                <div class="col-lg-8 col-xl-7 mx-auto text-center mb-5">
+                    <h3 class="block__title mb-3">Join us</h3>
+                    <p class="block__paragraph mb-0">A reliable Booter and Webstresser, ran by experienced persons in DDoS area.We are capable of providing the best DDoS for hire service of the century with an attack power that you will not see anywhere else.</p>
+                </div>
             </div>
         </div>
-    </main>
-</body>
-</html>
+        <div id="pricing" class="block-39 space-between-blocks">
+    <div class="container">
+        <div class="col-lg-8 col-xl-7 mx-auto text-center mb-5">
+            <h3 class="block__title">Pricing</h3>
+        </div>
+        <div class="row px-2">
+            <div class="col-lg-4">
+                <div class="fiyat">
+                    <h4 class="content-block__title">
+                        Free Package
+                        <br>
+                        €0 / Lifetime
+                    </h4>
+                    <p class="content-block__paragraph">
+                        <br>
+                        Max. Stress Time: 180
+                        <br><br>
+                        Concurrents: 1
+                        <br><br>
+                        Premium Network: 
+                        <span class="icon" data-icon-type="x-circle"></span>
+                        <br><br>
+                        API access: 
+                        <span class="icon" data-icon-type="x-circle"></span>
+                    </p>
+                    <br>
+                </div>
+                <br>
+            </div>
+            <div class="col-lg-4">
+                <div class="fiyat">
+                    <h4 class="content-block__title">
+                        Premium #1
+                        <br>
+                        €180 / Monthly
+                    </h4>
+                    <p class="content-block__paragraph">
+                        <br>
+                        Max. Stress Time: 1200
+                        <br><br>
+                        Concurrents: 2<br><br>
+                        Premium Network: 
+                        <span
