@@ -107,14 +107,42 @@
             <p class="color-shift text-sm font-bold mt-1">c: @winterkeith</p>
         </div>
         <i class="fas fa-bars text-gray-400 text-2xl cursor-pointer" onclick="toggleMenu()"></i>
-    </div>
-    <div id="menu" class="menu fixed inset-0 bg-gray-900 text-white flex flex-col items-center justify-center space-y-4 z-50">
-        <i class="fas fa-times text-white text-2xl cursor-pointer absolute top-4 right-4" onclick="toggleMenu()"></i>
-        <a href="https://attacks.vercel.app" class="text-2xl font-bold">Home</a>
-        <a href="https://attacks.vercel.app/login" class="text-2xl font-bold">Login</a>
-        <a href="https://attacks.vercel.app/register" class="text-2xl font-bold">Register</a>
-        <a href="https://attacks.vercel.app/hub" class="text-2xl font-bold">Attack Hub</a>
-        <a href="https://attacks.vercel.app/terminal" class="text-2xl font-bold">Free Vps</a>
+    </div>                            </svg>
+                        </button>
+                        <ul class="hero__menu-content nav flex-column flex-lg-row ft-menu__slider animated list-unstyled p-2 p-lg-0">
+                            <li>
+								<ul class="nav list-unstyled align-items-center p-0">
+									<li class="hero-nav__item">
+										<a title="Home" href="#s" class="nav_menu">Home</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Features" href="#features" onclick="smoothScroll(document.getElementById('features'))" class="nav_menu">Features</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Pricing" href="#pricing" onclick="smoothScroll(document.getElementById('pricing'))" class="nav_menu">Pricing</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="FAQ" href="#faq" onclick="smoothScroll(document.getElementById('faq'))" class="nav_menu">FAQ</a>
+									</li>
+									<li class="hero-nav__item">
+                                    <a title="Login" href="/login" class="nav_menu">Login</a>
+									</li>
+									<li class="hero-nav__item">
+										<a title="Register" href="/register" class="nav_menu">Register</a>
+									</li>
+								</ul>
+							</li>
+                        </ul>   
+                    </li>
+                    <li class="d-lg-none flex-grow-1 d-flex flex-row-reverse hero-nav__item">
+                        <button aria-label="mobile button" id="mobile-button-show" class="text-center px-2">
+                            <svg fill ="white" width="19" height="19" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
     </div>
     </div>
     <p class="mb-6">Deploy your attacks here.</p>
